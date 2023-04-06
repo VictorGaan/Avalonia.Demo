@@ -19,32 +19,31 @@ namespace Demo
 
         private void BtnAuth_OnClick(object sender, RoutedEventArgs e)
         {
-            new OrganizerWindow().Show();
-            //var user = Helper.GetContext().Users.ToList().SingleOrDefault(x => x.Email == TbLogin.Text && x.Password == TbPassword.Text);
-            //if (user is null)
-            //{
-            //    MessageBoxManager.GetMessageBoxStandardWindow("Информация", "Авторизация не пройдена.").Show();
-            //    return;
-            //}
+            var user = Helper.GetContext().Users.ToList().SingleOrDefault(x => x.Email == TbLogin.Text && x.Password == TbPassword.Text);
+            if (user is null)
+            {
+                MessageBoxManager.GetMessageBoxStandardWindow("Информация", "Авторизация не пройдена.").Show();
+                return;
+            }
 
-            //if (TbReCaptcha.Text != _captcha)
-            //{
-            //    MessageBoxManager.GetMessageBoxStandardWindow("Информация", "Неправильно введена капча.").Show();
-            //    SetCapthcha();
-            //    return;
-            //}
+            if (TbReCaptcha.Text != _captcha)
+            {
+                MessageBoxManager.GetMessageBoxStandardWindow("Информация", "Неправильно введена капча.").Show();
+                SetCapthcha();
+                return;
+            }
 
-            //switch (user.GetType().Name)
-            //{
-            //    case "JuryProxy":
-            //        new JuryWindow().Show();
-            //        Close();
-            //        break;
-            //    case "OrganizerProxy":
-            //        new OrganizerWindow().Show();
-            //        Close();
-            //        break;
-            //}
+            switch (user.GetType().Name)
+            {
+                case "JuryProxy":
+                    new JuryWindow().Show();
+                    Close();
+                    break;
+                case "OrganizerProxy":
+                    new OrganizerWindow().Show();
+                    Close();
+                    break;
+            }
         }
 
         private void SetCapthcha()
