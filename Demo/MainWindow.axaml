@@ -1,0 +1,41 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:helpers="clr-namespace:Demo.Helpers"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Demo.MainWindow"
+        Title="Главное окно">
+	<Window.Resources>
+		<helpers:BitmapAssetValueConverter x:Key="AssetValueConverter"/>
+	</Window.Resources>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+		<StackPanel Orientation="Horizontal">
+			<TextBlock Classes="defaultTextBlock" Text="С"></TextBlock>
+			<DatePicker Classes="defaultDatePicker" Name="DateStart" SelectedDateChanged="DateStart_OnSelectedDateChanged"></DatePicker>
+			<TextBlock Classes="defaultTextBlock" Text="По"></TextBlock>
+			<DatePicker Classes="defaultDatePicker" Name="DateFinish" SelectedDateChanged="DateFinish_OnSelectedDateChanged"></DatePicker>
+		</StackPanel>
+		<DataGrid Name="EventsGrid" AutoGenerateColumns="False" Grid.Row="1">
+			<DataGrid.Columns>
+				<DataGridTemplateColumn Header="Логотип">
+					<DataGridTemplateColumn.CellTemplate>
+						<DataTemplate>
+							<Image Height="150" Width="150" Source="{Binding Logo, Converter={StaticResource AssetValueConverter}}"></Image>
+						</DataTemplate>
+					</DataGridTemplateColumn.CellTemplate>
+				</DataGridTemplateColumn>
+				<DataGridTextColumn Header="Название мероприятия" Binding="{Binding Title}"></DataGridTextColumn>
+				<DataGridTextColumn Header="Дата" Binding="{Binding Date}"></DataGridTextColumn>
+				<DataGridTextColumn Header="Кол-во дней" Binding="{Binding CountDays}"></DataGridTextColumn>
+				<DataGridTextColumn Header="Город" Binding="{Binding City.Title}"></DataGridTextColumn>
+			</DataGrid.Columns>
+		</DataGrid>
+		<Button Grid.Row="2" Name="BtnAuth" Click="BtnAuth_OnClick" Content="Авторизоваться" Classes="defaultButton"></Button>
+	</Grid>
+</Window>

@@ -1,0 +1,59 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Demo.OrganizerWindow"
+        Title="Окно организатора">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<TextBlock Text="Фамилия" Classes="rightSideTextBlock"></TextBlock>
+		<TextBlock Text="Имя" Classes="rightSideTextBlock" Grid.Row="1"></TextBlock>
+		<TextBlock Text="Отчество" Classes="rightSideTextBlock" Grid.Row="2"></TextBlock>
+		<TextBlock Text="Пол" Classes="rightSideTextBlock" Grid.Row="3"></TextBlock>
+		<TextBlock Text="Роль" Classes="rightSideTextBlock" Grid.Row="4"></TextBlock>
+		<TextBlock Text="Email" Classes="rightSideTextBlock" Grid.Row="5"></TextBlock>
+		<TextBlock Text="Телефон" Classes="rightSideTextBlock" Grid.Row="6"></TextBlock>
+		<TextBlock Text="Направление" Classes="rightSideTextBlock" Grid.Row="7"></TextBlock>
+		<TextBlock Text="Фото" Classes="rightSideTextBlock" Grid.Row="8"></TextBlock>
+		<TextBox Classes="defaultTextBox" Grid.Column="1" Name="TbLastName"></TextBox>
+		<TextBox Classes="defaultTextBox" Grid.Row="1" Grid.Column="1" Name="TbFirstName"></TextBox>
+		<TextBox Classes="defaultTextBox" Grid.Row="2" Grid.Column="1" Name="TbMiddleName"></TextBox>
+		<ComboBox Classes="defaultComboBox" Grid.Row="3" Grid.Column="1" Name="CmbGender">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Title}"></TextBlock>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<ComboBox Classes="defaultComboBox" Grid.Row="4" Grid.Column="1" Name="CmbRole">
+			<ComboBox.ItemTemplate>
+				<DataTemplate>
+					<TextBlock Text="{Binding Title}"></TextBlock>
+				</DataTemplate>
+			</ComboBox.ItemTemplate>
+		</ComboBox>
+		<TextBox Classes="defaultTextBox" Grid.Row="5" Grid.Column="1" Name="TbEmail"></TextBox>
+		<MaskedTextBox Classes="defaultMaskedTextBox" Grid.Row="6" Grid.Column="1" Name="TbPhone" Mask="+7 (000) - 000-00-00"></MaskedTextBox>
+		<AutoCompleteBox ValueMemberBinding="{Binding Title}" Classes="defaultAutoCompleteBox" Grid.Row="7" Grid.Column="1" Name="CmbSpecification"></AutoCompleteBox>
+		<Image Name="Img" Grid.Column="1" Grid.Row="8"></Image>
+		<Button Name="BtnAttach" Click="BtnAttach_OnClick" Grid.Column="2" Grid.Row="8" Content="Прикрепить"></Button>
+		<Button Name="BtnSubmit" Click="BtnSubmit_OnClick" Grid.Column="2" Grid.Row="9" Content="Подтвердить"></Button>
+	</Grid>
+</Window>

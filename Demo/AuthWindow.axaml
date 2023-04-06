@@ -1,0 +1,31 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Demo.AuthWindow"
+        Title="Авторизация">
+	<Grid>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition/>
+			<ColumnDefinition/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<TextBlock Text="Логин" Classes="rightSideTextBlock"></TextBlock>
+		<TextBlock Text="Пароль" Classes="rightSideTextBlock" Grid.Row="1"></TextBlock>
+		<TextBox Classes="defaultTextBox" Name="TbLogin" Grid.Column="1"></TextBox>
+		<TextBox Classes="defaultTextBox" PasswordChar="*" Grid.Row="1" Name="TbPassword" Grid.Column="1"></TextBox>
+		<TextBlock Grid.Row="2" Text="Капча" Classes="rightSideTextBlock"></TextBlock>
+		<TextBlock Grid.Row="2" Grid.Column="1" Classes="defaultTextBlock" Name="TbCaptcha"></TextBlock>
+		<TextBlock Grid.Row="3" Text="Повторите капчу" Classes="rightSideTextBlock"></TextBlock>
+		<TextBox Grid.Row="3" Grid.Column="1" Classes="defaultTextBox" Name="TbReCaptcha"></TextBox>
+		<Button Grid.Row="4" Grid.Column="1" Name="BtnAuth" Click="BtnAuth_OnClick" Content="Авторизоваться" Classes="defaultButton"></Button>
+
+	</Grid>
+</Window>
